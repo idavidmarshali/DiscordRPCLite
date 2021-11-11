@@ -1,4 +1,6 @@
-![Dotnet version 5.0](https://img.shields.io/badge/.NET%20Version-5.0-blue)
+<img src="https://cdn.discordapp.com/attachments/787696198693158912/908343727729303562/icon.ico" width="75" hight="75"/> ![Dotnet version 5.0](https://img.shields.io/badge/.NET%20Version-5.0-blue)
+
+
 
 # DiscordRPCLite 
 

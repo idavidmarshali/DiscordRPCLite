@@ -1,14 +1,14 @@
 ﻿{
-  "ClientID" :  "907931100985323531",
+  "ClientID" :  "ID HERE",
   "State" :  "Default State",
   "Details" :  "Default Detail",
   "LargeImageKey" :  "logo",
   "LargeImageText" :  "test Big",
   "SmallImageKey" :  "logo",
   "SmallImageText" :  "test Small",
-  "Button1Text" :  "Default Button 1",
-  "Button1URL" :  "https://www.google.com",
-  "Button2Text" :  "Default Button 2",
-  "Button2URL" :  "https://www.discord.com",
+  "Button1Text" :  "",
+  "Button1URL" :  "",
+  "Button2Text" :  "",
+  "Button2URL" :  "",
   "ShowTime" : "Yes"
 }

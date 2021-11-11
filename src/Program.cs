@@ -66,7 +66,6 @@ namespace DiscordRpcLite
                         Console.Write("\nchoose an option :\n 1- Load config from file  |  2- Enter config manually");
                         Console.ResetColor();
                         goto config;
-                        
                     }
                     break;
                 case ConsoleKey.D2: 
@@ -255,34 +254,36 @@ namespace DiscordRpcLite
         /// </summary>
         private static void UpdatePresence()
         {
-            _client.SetPresence(
-                new RichPresence
+            RichPresence presence = new RichPresence
+            {
+                State = _rpcAtters["State"],
+                Details = _rpcAtters["Details"],
+                Assets = new Assets()
                 {
-                    State = _rpcAtters["State"],
-                    Details = _rpcAtters["Details"],
-                    Assets = new Assets()
-                    {
-                        LargeImageKey = _rpcAtters["LargeImageKey"],
-                        LargeImageText = _rpcAtters["LargeImageText"],
-                        SmallImageKey = _rpcAtters["SmallImageKey"],
-                        SmallImageText = _rpcAtters["SmallImageText"]
-                    },
-                    Buttons = new []
-                    {
-                        new Button
-                        {
-                            Label = _rpcAtters["Button1Text"], 
-                            Url = _rpcAtters["Button1URL"]
-                        },
-                        new Button
-                        {
-                            Label = _rpcAtters["Button2Text"], 
-                            Url = _rpcAtters["Button2URL"]
-                        }
-                    },
-                    Timestamps = _rpcAtters["ShowTime"].ToCamelCase() == "Yes" ? new Timestamps(DateTime.UtcNow) : new Timestamps() 
-                }
-            );
+                    LargeImageKey = _rpcAtters["LargeImageKey"],
+                    LargeImageText = _rpcAtters["LargeImageText"],
+                    SmallImageKey = _rpcAtters["SmallImageKey"],
+                    SmallImageText = _rpcAtters["SmallImageText"]
+                },
+                Timestamps = _rpcAtters["ShowTime"].ToCamelCase() == "Yes"
+                    ? new Timestamps(DateTime.UtcNow)
+                    : new Timestamps()
+            };
+            if (_rpcAtters["Button1Text"] != "" && _rpcAtters["Button2Text"] != "")
+            {
+                presence.Buttons = new[] {new Button() {
+                    Label = _rpcAtters["Button1Text"],
+                    Url = _rpcAtters["Button1URL"]}, 
+                    new Button()
+                    {Label = _rpcAtters["Button2Text"],
+                        Url = _rpcAtters["Button2URL"]}
+                };
+            }else if (_rpcAtters["Button1Text"] != "" || _rpcAtters["Button2Text"] != "")
+            {
+                int butt = _rpcAtters["Button1Text"] == "" ? 2 : 1;
+                presence.Buttons = new[] {new Button() {Label = _rpcAtters[$"Button{butt}Text"], Url = _rpcAtters[$"Button{butt}URL"]}};
+            }
+            _client.SetPresence(presence);
         }
         
         private static void OnPresenceUpdate(object sender, PresenceMessage message)

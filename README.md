@@ -8,6 +8,8 @@ DiscordRPCLite is a lightweight program for setting **Custom Discord Rich Presen
 
 it has been written in C# and compiled for DotNet 5.x Desktop Runtime.
 
+Report any problems by opening an Issue or sending me a message on [discord](https://discord.gg/Xa9VmvyyMw)
+
 #### Sections :
 - Releases:
   - [DRPCL-Lite](#drpcl-lite-release)
@@ -40,6 +42,8 @@ This release is ~500KB
 This is the main release which has the code + packages + runtime dlls needed to run the program
 meaning there is no need for you to download .Net Runtime, all the required files are included
 inside the program **at the cost of size**
+
+(Your antivirus might see this as a virus, thats only cause its not signed!)
 
 This release is ~12.5MB
 
